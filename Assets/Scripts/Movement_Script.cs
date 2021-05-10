@@ -13,9 +13,10 @@ public class Movement_Script : MonoBehaviour
     public float maxX = 5;
     public AudioSource footstepsGrass;
     public SpriteRenderer sr;
+    public GameObject fireball;
 
     
-    private Animator animator;
+    
     private int walkParamID;
     private int jumpParamID;
 
@@ -26,9 +27,9 @@ public class Movement_Script : MonoBehaviour
     public void Start()
     {
         footstepsGrass = GetComponent<AudioSource>();
-        animator = GetComponent<Animator>();
-        walkParamID = Animator.StringToHash("Walk");
-        jumpParamID = Animator.StringToHash("Jump");
+        //animator = GetComponent<Animator>();
+        //walkParamID = Animator.StringToHash("Walk");
+        //jumpParamID = Animator.StringToHash("Jump");
        
     }
 
@@ -55,6 +56,7 @@ public class Movement_Script : MonoBehaviour
             }
         }
 
+        /*
         //Animator
         if (isJumping)
         {Debug.Log("salto");
@@ -64,7 +66,7 @@ public class Movement_Script : MonoBehaviour
         else {
             isJumping = animator.GetBool(jumpParamID);
             animator.SetBool(jumpParamID, false);
-        }
+        }*/
 
     }
 
@@ -101,6 +103,7 @@ public class Movement_Script : MonoBehaviour
         } 
 
         //Animator
+        /*
         if (isWalking)
         {
             isWalking = animator.GetBool(walkParamID);
@@ -110,7 +113,7 @@ public class Movement_Script : MonoBehaviour
         {
             isWalking = animator.GetBool(walkParamID);
             animator.SetBool(walkParamID, false);
-        }
+        }*/
 
     }
     //Check if Grounded 

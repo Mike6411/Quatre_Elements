@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Projectile
+  - shadowDamage
+  - movespot
+  - lightBullet
+  - light
+  - enemy
   layers:
   - Default
   - TransparentFX

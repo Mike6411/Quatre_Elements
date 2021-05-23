@@ -165,6 +165,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &322424058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 758309085387922314, guid: cf166291a6739684a9b2e744661d87d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1301049309}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &624034777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 624034778}
+  - component: {fileID: 624034779}
+  m_Layer: 0
+  m_Name: Aim_Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &624034778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624034777}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 938815616}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &624034779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624034777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c36307579677eb14aba0db13f021e856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jugador: {fileID: 322424058}
+  rocket: {fileID: 2741544493845643253, guid: 6ed3276aa670b9947987db58fa9d65bb, type: 3}
+  rocketSpeed: 100
+  shotDelay: 0.5
+  elapsedTime: 0
 --- !u!1 &806763694
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +262,11 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 206.45822, y: 5.1518283}
+      - {x: 156.0458, y: 7.2564926}
+      - {x: 147.46062, y: 7.782706}
+      - {x: 132.50615, y: 7.574156}
+      - {x: 126.45239, y: 7.149598}
+      - {x: 105.58593, y: 5.273457}
       - {x: -12.428853, y: 5.2775292}
       - {x: -12.39267, y: -5.7078586}
       - {x: 206.51845, y: -5.4492292}
@@ -225,12 +284,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &938815613 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 938815613, guid: cf166291a6739684a9b2e744661d87d5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1301049309}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &938815616 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2227330676977139708, guid: cf166291a6739684a9b2e744661d87d5,
@@ -360,23 +413,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 938815614, guid: cf166291a6739684a9b2e744661d87d5, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 938815617, guid: cf166291a6739684a9b2e744661d87d5, type: 3}
       propertyPath: jump
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 938815617, guid: cf166291a6739684a9b2e744661d87d5, type: 3}
-      propertyPath: fireball
+    - target: {fileID: 1441158783, guid: cf166291a6739684a9b2e744661d87d5, type: 3}
+      propertyPath: TriggerModule.collisionShape0
       value: 
-      objectReference: {fileID: 2741544493845643253, guid: 6ed3276aa670b9947987db58fa9d65bb,
-        type: 3}
-    - target: {fileID: 938815617, guid: cf166291a6739684a9b2e744661d87d5, type: 3}
-      propertyPath: sr
-      value: 
-      objectReference: {fileID: 938815613}
+      objectReference: {fileID: 38909873}
     - target: {fileID: 758309085387922314, guid: cf166291a6739684a9b2e744661d87d5,
         type: 3}
       propertyPath: m_Name
@@ -8587,7 +8631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055253604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7886305, y: 0.70229053, z: -10}
+  m_LocalPosition: {x: -1.1123667, y: 0.6960292, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -22,6 +22,8 @@ public class Enemys : MonoBehaviour
 
     public float deadTime;
 
+    private Animator anim;
+
     public Transform gamestop;
     public Transform gamestop1;
     public int hp = 10;
@@ -38,6 +40,7 @@ public class Enemys : MonoBehaviour
     {
         timeBtwShots = 0f;
         waitTime = startWaitTime;
+        anim = GetComponent<Animator>();
 
     }
 
@@ -50,6 +53,7 @@ public class Enemys : MonoBehaviour
         }
         if (llegada == false)
         {
+            anim.SetBool("walk", true);
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
             transform.position = Vector2.MoveTowards(transform.position, gamestop.position, speed * Time.deltaTime);
             if (waitTime <= 0)
@@ -63,6 +67,7 @@ public class Enemys : MonoBehaviour
         }
         if (llegada == true)
         {
+            anim.SetBool("walk", true);
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
             transform.position = Vector2.MoveTowards(transform.position, gamestop1.position, speed * Time.deltaTime);
             if (waitTime <= 0)
@@ -79,6 +84,7 @@ public class Enemys : MonoBehaviour
 
         if (timeBtwShots <= 0 && llegada && player.transform.position.x > transform.position.x)
         {
+            anim.Play("Attack");
             var bullet = Instantiate(projectile, LaunchPosition.transform.position, LaunchPosition.transform.rotation);
             Destroy(bullet.gameObject, 1.5f);
             timeBtwShots = startBtwTimeShots;
@@ -89,6 +95,7 @@ public class Enemys : MonoBehaviour
         }
         if (timeBtwShots <= 0 && !llegada && player.transform.position.x < transform.position.x)
         {
+            anim.Play("Attack");
             var bullet = Instantiate(projectile, LaunchPosition.transform.position, LaunchPosition.transform.rotation);
             Destroy(bullet.gameObject, 1.5f);
             timeBtwShots = startBtwTimeShots;
@@ -118,6 +125,7 @@ public class Enemys : MonoBehaviour
         }
         if (col.gameObject.tag == "Projectile")
         {
+            anim.Play("Damage");
             hp -= 5;
             Destroy(col.gameObject);
             if (hp <= 0)

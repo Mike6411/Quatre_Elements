@@ -7,7 +7,8 @@ public class Movement_Script : MonoBehaviour
 {
     public float speed;
     public float jump;
-    public int hp;
+    public float hp;
+    public float maxhp;
     private float speedx;
     public Rigidbody2D rb;
     private int counter = 0;
@@ -15,7 +16,7 @@ public class Movement_Script : MonoBehaviour
     public AudioSource footstepsGrass;
     public SpriteRenderer sr;
     public GameObject fireball;
-
+    public HealthBar healthbar;
     public GameObject shield;
 
     
@@ -30,7 +31,9 @@ public class Movement_Script : MonoBehaviour
 
     public void Start()
     {
-        hp = 10;
+        maxhp = 10;
+        hp = maxhp;
+        healthbar.SetHealth(hp, maxhp);
         //animator = GetComponent<Animator>();
         //walkParamID = Animator.StringToHash("Walk");
         //jumpParamID = Animator.StringToHash("Jump");
@@ -170,6 +173,7 @@ public class Movement_Script : MonoBehaviour
         if (collision.gameObject.tag == "lightBullet")
         {
             hp--;
+            HealthBar.SetHealth(hp, maxhp);
         }
 
         if (collision.gameObject.tag == "water")

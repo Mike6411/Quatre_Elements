@@ -12,24 +12,35 @@ public class Game_Manager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
+        if(Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(this);
         }
         else
         {
-            Debug.Log("Warning: multiple " + this + " in scene!");
+            Debug.Log("Warning: multiple " + this + " in scene!");    
         }
     }
 
-    public void GoToVictory()
+    void Update()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            GoToMenu();
+        }
     }
-    public void Next()
+
+
+    public void GoToMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Start_Menu");
     }
 
 }

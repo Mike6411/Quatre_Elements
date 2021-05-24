@@ -173,7 +173,7 @@ public class Movement_Script : MonoBehaviour
         if (collision.gameObject.tag == "lightBullet")
         {
             hp--;
-            HealthBar.SetHealth(hp, maxhp);
+            healthbar.SetHealth(hp, maxhp);
         }
 
         if (collision.gameObject.tag == "water")

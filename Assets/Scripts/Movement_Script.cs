@@ -177,6 +177,7 @@ public class Movement_Script : MonoBehaviour
         {
             hp--;
             healthbar.SetHealth(hp, maxhp);
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.tag == "water")

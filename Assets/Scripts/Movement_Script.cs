@@ -7,7 +7,8 @@ public class Movement_Script : MonoBehaviour
 {
     public float speed;
     public float jump;
-    public int hp;
+    public float hp;
+    public float maxhp;
     private float speedx;
     public Rigidbody2D rb;
     private int counter = 0;
@@ -15,22 +16,24 @@ public class Movement_Script : MonoBehaviour
     public AudioSource footstepsGrass;
     public SpriteRenderer sr;
     public GameObject fireball;
-
+    public HealthBar healthbar;
     public GameObject shield;
 
-    public ParticleSystem shieldParticle; 
-    public ParticleSystem jumpParticle; 
+    public ParticleSystem shieldParticle;
+    public ParticleSystem jumpParticle;
     private int walkParamID;
     private int jumpParamID;
 
-   
+
     float moveVelocity;
     public bool grounded = true;
     public bool escut;
 
     public void Start()
     {
-        hp = 10;
+        maxhp = 10;
+        hp = maxhp;
+        healthbar.SetHealth(hp, maxhp);
         //animator = GetComponent<Animator>();
         //walkParamID = Animator.StringToHash("Walk");
         //jumpParamID = Animator.StringToHash("Jump");
@@ -38,9 +41,9 @@ public class Movement_Script : MonoBehaviour
     }
 
     void Update()
-    {      
+    {
          bool isJumping = false;
-        //Jumping 
+        //Jumping
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpParticle.Play();
@@ -104,10 +107,10 @@ public class Movement_Script : MonoBehaviour
         bool isWalking = false;
 
 
-        //Left Right Movement 
+        //Left Right Movement
         if (Input.GetKey(KeyCode.A))
         {
-            
+
             isWalking = true;
             if (rb.velocity.x > -maxX)
             {
@@ -119,15 +122,15 @@ public class Movement_Script : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
-            
+
             isWalking = true;
             if (rb.velocity.x < maxX)
             {
                 rb.AddForce((Vector2.right * speed) , ForceMode2D.Force);
                 sr.flipX = false;
             }
-            
-        } 
+
+        }
 
         //Animator
         /*
@@ -143,19 +146,19 @@ public class Movement_Script : MonoBehaviour
         }*/
 
     }
-    //Check if Grounded 
+    //Check if Grounded
     void OnCollisionStay2D()
     {
         jumpParticle.Stop();
         grounded = true;
-        
+
     }
     void OnCollisionExit2D()
     {
         grounded = false;
     }
 
-   
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
          if (collision.gameObject.tag == "grass") {
@@ -173,7 +176,7 @@ public class Movement_Script : MonoBehaviour
         if (collision.gameObject.tag == "lightBullet")
         {
             hp--;
-            Destroy(collision.gameObject);
+            healthbar.SetHealth(hp, maxhp);
         }
 
         if (collision.gameObject.tag == "water")
@@ -186,5 +189,5 @@ public class Movement_Script : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
-    
+
 }

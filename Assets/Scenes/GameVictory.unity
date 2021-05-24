@@ -273,7 +273,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press this button to return to the Start
+  m_Text: Press O to return to the Start
 --- !u!222 &538464899
 CanvasRenderer:
   m_ObjectHideFlags: 0

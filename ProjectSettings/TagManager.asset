@@ -12,6 +12,7 @@ TagManager:
   - enemy
   - water
   - end
+  - trap
   layers:
   - Default
   - TransparentFX

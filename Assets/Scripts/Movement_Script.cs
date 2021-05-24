@@ -16,7 +16,7 @@ public class Movement_Script : MonoBehaviour
     public AudioSource footstepsGrass;
     public SpriteRenderer sr;
     public GameObject fireball;
-    public HealthBar healthbar;
+    //public HealthBar healthbar;
     public GameObject shield;
 
     public ParticleSystem shieldParticle;
@@ -33,7 +33,8 @@ public class Movement_Script : MonoBehaviour
     {
         maxhp = 10;
         hp = maxhp;
-        healthbar.SetHealth(hp, maxhp);
+        //INTENTO DE HEALTHBAR FALLIDO POR UN BUG QUE NO SUPIMOS ARREGLAR
+        //healthbar.SetHealth(hp, maxhp);
         //animator = GetComponent<Animator>();
         //walkParamID = Animator.StringToHash("Walk");
         //jumpParamID = Animator.StringToHash("Jump");
@@ -176,7 +177,7 @@ public class Movement_Script : MonoBehaviour
         if (collision.gameObject.tag == "lightBullet")
         {
             hp--;
-            healthbar.SetHealth(hp, maxhp);
+            //healthbar.SetHealth(hp, maxhp);
             Destroy(collision.gameObject);
         }
 
@@ -188,6 +189,10 @@ public class Movement_Script : MonoBehaviour
         if (collision.gameObject.tag == "end")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        if (collision.gameObject.tag == "trap")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 

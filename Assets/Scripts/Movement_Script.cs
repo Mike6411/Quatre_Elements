@@ -7,6 +7,7 @@ public class Movement_Script : MonoBehaviour
 {
     public float speed;
     public float jump;
+    public int hp;
     private float speedx;
     public Rigidbody2D rb;
     private int counter = 0;
@@ -14,6 +15,8 @@ public class Movement_Script : MonoBehaviour
     public AudioSource footstepsGrass;
     public SpriteRenderer sr;
     public GameObject fireball;
+
+    public GameObject shield;
 
     
     
@@ -23,19 +26,19 @@ public class Movement_Script : MonoBehaviour
    
     float moveVelocity;
     public bool grounded = true;
+    public bool escut;
 
     public void Start()
     {
-        footstepsGrass = GetComponent<AudioSource>();
+        hp = 10;
         //animator = GetComponent<Animator>();
         //walkParamID = Animator.StringToHash("Walk");
         //jumpParamID = Animator.StringToHash("Jump");
-       
+        escut = false;
     }
 
     void Update()
-    {
-      
+    {      
          bool isJumping = false;
         //Jumping 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -56,6 +59,23 @@ public class Movement_Script : MonoBehaviour
             }
         }
 
+        if (Input.GetKey(KeyCode.Q))
+        {
+            if (escut == false)
+            {
+                escut = true;
+                shield.GetComponent<CircleCollider2D>().enabled = true;
+                shield.GetComponent<ParticleSystem>().Play();
+            }
+
+            if (escut == true)
+            {
+                escut = false;
+                shield.GetComponent<CircleCollider2D>().enabled = false;
+                shield.GetComponent<ParticleSystem>().Stop();
+            }
+        }
+
         /*
         //Animator
         if (isJumping)
@@ -67,6 +87,11 @@ public class Movement_Script : MonoBehaviour
             isJumping = animator.GetBool(jumpParamID);
             animator.SetBool(jumpParamID, false);
         }*/
+
+        if (hp <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 
     }
 
@@ -142,19 +167,20 @@ public class Movement_Script : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
    {
-        if (collision.gameObject.tag == "car")
-        {
-            //Game_Manager.Instance.LoadNextScene();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            Debug.Log("NEXT");
-        }
-
         if (collision.gameObject.tag == "Finale") 
         {
             SceneManager.LoadScene("Final");
         }
 
-        
+        if (collision.gameObject.tag == "lightBullet")
+        {
+            hp--;
+        }
+
+        if (collision.gameObject.tag == "water")
+        {
+            hp = 10;
+        }
     }
     
 }

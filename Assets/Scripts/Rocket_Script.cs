@@ -8,4 +8,12 @@ public class Rocket_Script : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag != "Untagged")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

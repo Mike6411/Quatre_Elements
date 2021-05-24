@@ -762,7 +762,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 10
     angle: 30
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -1464,7 +1464,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
+    enabled: 1
     mode: 0
     timeMode: 0
     fps: 30
@@ -1479,21 +1479,39 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 0
-          outSlope: 1
+          inSlope: 1.5109148
+          outSlope: 1.5109148
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.24148604
+        - serializedVersion: 3
+          time: 0.032443736
+          value: 0.04826094
+          inSlope: 2.5142817
+          outSlope: 2.5142817
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
+          outWeight: 0.09126011
+        - serializedVersion: 3
+          time: 0.9311725
+          value: 0.9557418
+          inSlope: 0.13032928
+          outSlope: 0.13032928
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.19900398
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
           value: 1
-          inSlope: 1
-          outSlope: 0
+          inSlope: 0.7060812
+          outSlope: 0.7060812
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0.2105264
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -1575,15 +1593,16 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     speedRange: {x: 0, y: 1}
-    tilesX: 1
-    tilesY: 1
+    tilesX: 8
+    tilesY: 8
     animationType: 0
     rowIndex: 0
     cycles: 1
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: -5816502473641415130, guid: 55628c35575bb9e4e8c5b5be37c4e6c6,
+        type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -4812,7 +4831,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 7ff5c56ee50afd249b412f5b7d585676, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

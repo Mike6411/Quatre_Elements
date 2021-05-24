@@ -18,8 +18,8 @@ public class Movement_Script : MonoBehaviour
 
     public GameObject shield;
 
-    
-    
+    public ParticleSystem shieldParticle; 
+    public ParticleSystem jumpParticle; 
     private int walkParamID;
     private int jumpParamID;
 
@@ -43,7 +43,8 @@ public class Movement_Script : MonoBehaviour
         //Jumping 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-           isJumping = true;
+            jumpParticle.Play();
+            isJumping = true;
             if (!grounded)
             {
                 if (counter < 1)
@@ -59,18 +60,19 @@ public class Movement_Script : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (escut == false)
+            if (!escut)
             {
                 escut = true;
+                shieldParticle.Play();
                 shield.GetComponent<CircleCollider2D>().enabled = true;
                 shield.GetComponent<ParticleSystem>().Play();
             }
-
-            if (escut == true)
+            else
             {
                 escut = false;
+                shieldParticle.Stop();
                 shield.GetComponent<CircleCollider2D>().enabled = false;
                 shield.GetComponent<ParticleSystem>().Stop();
             }
@@ -144,6 +146,7 @@ public class Movement_Script : MonoBehaviour
     //Check if Grounded 
     void OnCollisionStay2D()
     {
+        jumpParticle.Stop();
         grounded = true;
         
     }
@@ -170,6 +173,7 @@ public class Movement_Script : MonoBehaviour
         if (collision.gameObject.tag == "lightBullet")
         {
             hp--;
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.tag == "water")

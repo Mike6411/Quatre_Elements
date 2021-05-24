@@ -27,9 +27,10 @@ public class Blaster_Aim : MonoBehaviour
         //Weapon Use
         if (Input.GetKeyDown(KeyCode.Mouse0) && elapsedTime >= shotDelay)
         {
-        elapsedTime = 0;
-        GameObject newRocket = Instantiate(rocket, transform.position + transform.right, transform.rotation);
-        newRocket.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * rocketSpeed);
+            elapsedTime = 0;
+            GameObject newRocket = Instantiate(rocket, transform.position + transform.right, transform.rotation);
+            newRocket.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right * rocketSpeed);
+            Destroy(newRocket, 1.5f);
         }
     }
 

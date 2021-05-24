@@ -24,11 +24,11 @@ public class lightBullet : MonoBehaviour
         if (lightEnemy.GetComponent<SpriteRenderer>().flipX == false)
         {
             bullet.velocity = new Vector2(baseSpeed, bullet.velocity.y);
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
         else
         {
             bullet.velocity = new Vector2(-baseSpeed, bullet.velocity.y);
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
     }
 

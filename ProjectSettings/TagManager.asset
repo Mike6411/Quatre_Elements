@@ -11,6 +11,7 @@ TagManager:
   - light
   - enemy
   - water
+  - end
   layers:
   - Default
   - TransparentFX

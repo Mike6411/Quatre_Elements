@@ -167,11 +167,6 @@ public class Movement_Script : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
    {
-        if (collision.gameObject.tag == "Finale") 
-        {
-            SceneManager.LoadScene("Final");
-        }
-
         if (collision.gameObject.tag == "lightBullet")
         {
             hp--;
@@ -180,6 +175,11 @@ public class Movement_Script : MonoBehaviour
         if (collision.gameObject.tag == "water")
         {
             hp = 10;
+        }
+
+        if (collision.gameObject.tag == "end")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
     
